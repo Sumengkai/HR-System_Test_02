@@ -1,0 +1,6 @@
+{
+ "version": 2,
+ "builds" : [
+   {"src":"com/example/new_hr_system/NewHrSystemApplication" , "use":@vercel-jdk }	
+ ]
+}
