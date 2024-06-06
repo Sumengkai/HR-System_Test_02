@@ -90,6 +90,7 @@
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 # ============================================================================
 # 使用官方的 OpenJDK JDK 作为基础镜像
+# 使用官方的 OpenJDK JDK 作为基础镜像
 FROM openjdk:11-jdk-slim
 
 # 设置工作目录
@@ -116,8 +117,8 @@ RUN echo "生成的文件：" && ls -la build/libs
 # 调试：列出所有文件以确认路径
 RUN echo "所有文件：" && find . -type f
 
-# 暂时注释掉复制 JAR 文件的指令，等待确认路径
-COPY --from=0 /app/build/libs/Hr_System-0.0.1-SNAPSHOT.jar /app/app.jar
+# 复制生成的 JAR 文件到 app.jar
+RUN cp build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用运行的端口
 EXPOSE 8080
