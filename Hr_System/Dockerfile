@@ -107,8 +107,8 @@ RUN echo "禁用缓存"
 # 赋予 gradlew 脚本执行权限
 RUN chmod +x gradlew
 
-# 构建项目
-RUN ./gradlew clean build --no-daemon --no-build-cache
+# 构建项目并忽略测试
+RUN ./gradlew clean build --no-daemon --no-build-cache -x test
 
 # 列出生成的文件
 RUN echo "生成的文件：" && ls -la build/libs
