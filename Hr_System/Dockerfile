@@ -90,6 +90,7 @@
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 # ============================================================================
 # 使用官方的 OpenJDK 作为基础镜像
+# 使用官方的 OpenJDK 作为基础镜像
 FROM openjdk:11-jre-slim
 
 # 设置工作目录
@@ -101,6 +102,9 @@ COPY . .
 # 列出当前目录的所有文件
 RUN echo "当前目录的文件：" && ls -la
 
+# 添加无害的命令以确保缓存被禁用
+RUN echo "禁用缓存"
+
 # 构建项目
 RUN ./gradlew clean build --no-daemon --no-build-cache
 
@@ -110,8 +114,8 @@ RUN echo "生成的文件：" && ls -la build/libs
 # 调试：列出所有文件以确认路径
 RUN echo "所有文件：" && find . -type f
 
-# 复制生成的 JAR 文件到工作目录中
-COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
+# 暂时注释掉复制 JAR 文件的指令，等待确认路径
+# COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用运行的端口
 EXPOSE 8080
