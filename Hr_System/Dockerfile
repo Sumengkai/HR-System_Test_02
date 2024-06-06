@@ -91,6 +91,7 @@
 # ============================================================================
 # 使用官方的 OpenJDK 作为基础镜像
 # 使用官方的 OpenJDK 作为基础镜像
+# 使用官方的 OpenJDK 作为基础镜像
 FROM openjdk:11-jre-slim
 
 # 设置工作目录
@@ -104,6 +105,9 @@ RUN echo "当前目录的文件：" && ls -la
 
 # 添加无害的命令以确保缓存被禁用
 RUN echo "禁用缓存"
+
+# 赋予 gradlew 脚本执行权限
+RUN chmod +x gradlew
 
 # 构建项目
 RUN ./gradlew clean build --no-daemon --no-build-cache
