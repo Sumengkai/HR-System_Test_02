@@ -72,7 +72,7 @@ ENV FORCE_REBUILD=1
 COPY . .
 
 # 构建项目
-RUN ./gradlew build
+RUN ./gradlew build --no-daemon
 
 # 列出生成的文件
 RUN ls -la build/libs
