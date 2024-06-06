@@ -117,7 +117,7 @@ RUN echo "生成的文件：" && ls -la build/libs
 RUN echo "所有文件：" && find . -type f
 
 # 暂时注释掉复制 JAR 文件的指令，等待确认路径
-# COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用运行的端口
 EXPOSE 8080
