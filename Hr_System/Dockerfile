@@ -102,7 +102,7 @@ COPY . .
 RUN echo "当前目录的文件：" && ls -la
 
 # 构建项目
-RUN ./gradlew build --no-daemon
+RUN ./gradlew clean build --no-daemon --no-build-cache
 
 # 列出生成的文件
 RUN echo "生成的文件：" && ls -la build/libs
