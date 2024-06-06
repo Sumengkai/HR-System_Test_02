@@ -64,6 +64,10 @@ FROM openjdk:11-jre-slim
 # 设置工作目录
 WORKDIR /app
 
+
+# 添加一个无关紧要的环境变量以强制重新运行步骤
+ENV FORCE_REBUILD=1
+
 # 将当前目录的内容复制到工作目录中
 COPY . .
 
@@ -81,10 +85,10 @@ COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用运行的端口
 EXPOSE 8080
-# ============================================================================
+
 # 运行 Spring Boot 应用
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
+# ============================================================================
    # 使用官方的 OpenJDK 作为基础镜像
   #  FROM openjdk:11-jre-slim
 
