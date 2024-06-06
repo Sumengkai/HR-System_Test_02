@@ -21,12 +21,11 @@ FROM openjdk:11-jre-slim
 # 设置工作目录
 WORKDIR /app
 
+# 将当前目录的内容复制到工作目录中
+COPY . .
+
 # 构建项目
 RUN ./gradlew build
-
-# 将当前目录的内容复制到工作目录中
-COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
-
 
 # 复制生成的 JAR 文件到工作目录中
 COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
