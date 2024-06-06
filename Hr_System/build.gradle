@@ -30,7 +30,7 @@ dependencies {
     // other dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//test
-	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+	// implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 }
 
 tasks.named('test') {
