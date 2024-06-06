@@ -90,7 +90,6 @@
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 # ============================================================================
 # 使用官方的 OpenJDK JDK 作为基础镜像
-# 使用官方的 OpenJDK JDK 作为基础镜像
 FROM openjdk:11-jdk-slim
 
 # 设置工作目录
@@ -122,6 +121,10 @@ RUN cp build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用运行的端口
 EXPOSE 8080
+
+# 调试：检查数据库连接（可选）
+RUN apt-get update && apt-get install -y netcat
+RUN echo "检查数据库连接：" && nc -zv host.docker.internal 3306
 
 # 运行 Spring Boot 应用
 ENTRYPOINT ["java", "-jar", "app.jar"]
