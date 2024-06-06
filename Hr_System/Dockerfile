@@ -59,26 +59,56 @@
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 # ============================================================================
 # 使用官方的 OpenJDK 作为基础镜像
+# FROM openjdk:11-jre-slim
+
+# 设置工作目录
+# WORKDIR /app
+
+
+# 添加一个无关紧要的环境变量以强制重新运行步骤
+# ENV FORCE_REBUILD=1
+
+# 将当前目录的内容复制到工作目录中
+# COPY . .
+
+# 构建项目
+# RUN ./gradlew build --no-daemon
+
+# 列出生成的文件
+# RUN ls -la build/libs
+
+# 调试：列出所有文件以确认路径
+# RUN find . -type f
+
+# 复制生成的 JAR 文件到工作目录中
+# COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
+
+# 暴露应用运行的端口
+# EXPOSE 8080
+
+# 运行 Spring Boot 应用
+# ENTRYPOINT ["java", "-jar", "app.jar"]
+# ============================================================================
+# 使用官方的 OpenJDK 作为基础镜像
 FROM openjdk:11-jre-slim
 
 # 设置工作目录
 WORKDIR /app
 
-
-# 添加一个无关紧要的环境变量以强制重新运行步骤
-ENV FORCE_REBUILD=1
-
 # 将当前目录的内容复制到工作目录中
 COPY . .
+
+# 列出当前目录的所有文件
+RUN echo "当前目录的文件：" && ls -la
 
 # 构建项目
 RUN ./gradlew build --no-daemon
 
 # 列出生成的文件
-RUN ls -la build/libs
+RUN echo "生成的文件：" && ls -la build/libs
 
 # 调试：列出所有文件以确认路径
-RUN find . -type f
+RUN echo "所有文件：" && find . -type f
 
 # 复制生成的 JAR 文件到工作目录中
 COPY build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
@@ -88,21 +118,3 @@ EXPOSE 8080
 
 # 运行 Spring Boot 应用
 ENTRYPOINT ["java", "-jar", "app.jar"]
-# ============================================================================
-   # 使用官方的 OpenJDK 作为基础镜像
-  #  FROM openjdk:11-jre-slim
-
-   # 设置工作目录
-   # WORKDIR /app
-
-   # 将 Hr_System 目录的内容复制到工作目录中
- #   COPY Hr_System .
-
-   # 复制生成的 JAR 文件到工作目录中
- #   COPY Hr_System/build/libs/Hr_System-0.0.1-SNAPSHOT.jar app.jar
-
-   # 暴露应用运行的端口
-  #  EXPOSE 8080
-
-   # 运行 Spring Boot 应用
- #   ENTRYPOINT ["java", "-jar", "app.jar"]
