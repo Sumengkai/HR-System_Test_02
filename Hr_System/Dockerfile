@@ -124,7 +124,7 @@ EXPOSE 8080
 
 # 调试：检查数据库连接（可选）
 RUN apt-get update && apt-get install -y netcat
-# RUN echo "检查数据库连接：" && nc -zv 172.17.0.1 3306
+RUN echo "检查数据库连接：" && nc -zv 172.17.0.1 3306
 
 # 运行 Spring Boot 应用
 ENTRYPOINT ["java", "-jar", "app.jar"]
