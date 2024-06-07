@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.new_hr_system.service.ifs.SalarySystemService;
 import com.example.new_hr_system.vo.SalarySystemReq;
 import com.example.new_hr_system.vo.SalarySystemRes;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-//@CrossOrigin
+@CrossOrigin 
 @RestController
 public class SalarySystemController {
 	@Autowired

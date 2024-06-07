@@ -12,7 +12,9 @@ import com.example.new_hr_system.vo.AbsenceSystemReq;
 import com.example.new_hr_system.vo.AbsenceSystemRes;
 import com.example.new_hr_system.vo.AbsenceSystemResList;
 import com.example.new_hr_system.vo.EmployeeInfoRes;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin 
 @RestController
 public class AbsenceSystemController {
 
