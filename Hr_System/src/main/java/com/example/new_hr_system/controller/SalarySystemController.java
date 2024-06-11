@@ -3,15 +3,16 @@ package com.example.new_hr_system.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.new_hr_system.service.ifs.SalarySystemService;
 import com.example.new_hr_system.vo.SalarySystemReq;
 import com.example.new_hr_system.vo.SalarySystemRes;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
+@SessionAttributes({ "employee_code", "EmployeeCode" })
 @CrossOrigin 
 @RestController
 public class SalarySystemController {

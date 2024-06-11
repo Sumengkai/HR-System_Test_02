@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.new_hr_system.service.ifs.AbsenceSystemService;
 import com.example.new_hr_system.vo.AbsenceSystemReq;
 import com.example.new_hr_system.vo.AbsenceSystemRes;
 import com.example.new_hr_system.vo.AbsenceSystemResList;
 import com.example.new_hr_system.vo.EmployeeInfoRes;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin 
+@SessionAttributes({ "employee_code", "EmployeeCode" })
 @RestController
 public class AbsenceSystemController {
 
@@ -28,14 +28,14 @@ public class AbsenceSystemController {
 		return absenceSystemService.addAbsence(req, httpSession);
 
 	}
-	
+
 	// 員工新增假單(多筆)(15:26)
-		@PostMapping(value = "/api/addAbsences")
-		public AbsenceSystemRes addAbsences(@RequestBody AbsenceSystemReq req, HttpSession httpSession) {
+	@PostMapping(value = "/api/addAbsences")
+	public AbsenceSystemRes addAbsences(@RequestBody AbsenceSystemReq req, HttpSession httpSession) {
 
-			return absenceSystemService.addAbsences(req, httpSession);
+		return absenceSystemService.addAbsences(req, httpSession);
 
-		}
+	}
 
 	// 刪除假單
 	@PostMapping(value = "/api/deleteAbsence")

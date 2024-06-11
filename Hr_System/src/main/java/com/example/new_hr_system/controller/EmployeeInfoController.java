@@ -2,21 +2,24 @@ package com.example.new_hr_system.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.example.new_hr_system.constants.EmployeeInfoRtnCode;
 import com.example.new_hr_system.entity.EmployeeInfo;
 import com.example.new_hr_system.service.ifs.EmployeeInfoService;
 import com.example.new_hr_system.vo.EmployeeInfoReq;
 import com.example.new_hr_system.vo.EmployeeInfoRes;
-
-@CrossOrigin
+@SessionAttributes({ "employee_code", "EmployeeCode" })
+@CrossOrigin 
 @RestController
 public class EmployeeInfoController {
 
